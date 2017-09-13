@@ -1,16 +1,3 @@
----
-title: "ROverview"
-output:
-  revealjs::revealjs_presentation:
-    theme: night
-    highlight: pygments
-    center: true
-    transition: none
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
 
 ## 試試水溫
 
@@ -26,13 +13,4 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ## Slide with R Output
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
 ## Slide with Plot
-
-```{r pressure}
-plot(pressure)
-```
-

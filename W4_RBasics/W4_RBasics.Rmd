@@ -1,38 +1,126 @@
 ---
 title: "ROverview"
-output:
-  revealjs::revealjs_presentation:
-    theme: night
-    highlight: pygments
-    center: true
-    transition: none
+output: 
+    html_document:
+        theme: default
+        highlight: pygments
+
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## 試試水溫
+R 語言與資料科學導論作業 (W4)
+=============================
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+一般系 b96001001 未命名
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
 
-## Slide with Bullets
+## A. Complete compute_area(...)
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+### 撰寫compute_area函數
+請完成課堂上的compute_area(...)，它必須能夠：
 
-## Slide with R Output
+* 計算二種形狀：
+    * 圓形（以半徑長當參數）
+    * 正方形（以邊長當參數）
+* 它要能夠傳回面積和周長
 
-```{r cars, echo = TRUE}
-summary(cars)
+函數的型態(signature)：
+
+* 輸入為兩個參數：
+    * x: 邊長或半徑
+    * shape_str: "circle" 或是 "square"
+* 函數回傳：
+    * 一個有名稱的vector，該vector有兩個元素。第一個是面積，第二個是周長。請記得給他恰當的名稱。
+
+
+```{r func_def, echo=TRUE}
+# your function definition goes here
 ```
 
-## Slide with Plot
+假設你的函數名稱也是compute_area，且參數順序是邊長是對的，那應該可以用以下code chunk測試。
 
-```{r pressure}
-plot(pressure)
+```{r func_test, echo=TRUE, error=TRUE}
+circ_ret <- compute_area(6.5, "circle")
+sqr_ret <- compute_area(5.2, "square")
+circ_ret
+sqr_ret
 ```
 
+
+## B. Plot the future
+
+### 繪圖函數
+R內建很豐富的繪圖指令，例如繪製散佈圖、折線圖的plot
+和直方圖的hist。請用說明文件幫助你找到正確的方式畫出散佈圖、折線圖和直方圖。
+
+繪圖用的資料可以用以下code chunk直接產生。請注意，由於是資料是隨機產生的，
+每次執行的資料都會是不同的。
+
+您需要用以下的plot_data完成3張圖：
+
+1. x 和 y 的散佈圖
+2. x 和 z 的折線圖
+3. z 的直方圖
+
+您只需要繪製出圖本身即可。但當然歡迎幫它加上標題、顏色、軸標題等等。
+
+```{r data.prep, echo=TRUE}
+plot_data = data.frame(
+    x <- 1:100,
+    y <- 50 + 10 * rnorm(length(x), 0, 1),
+    z <- x * 0.8 + rnorm(length(x), 0, 4)
+)
+```
+
+```{r scatter.code, echo=TRUE}
+# Scatter: your code goes here
+```
+
+```{r line.code, echo=TRUE}
+# Line chart: your code goes here
+```
+
+```{r hist.code, echo=TRUE}
+# Histogram: your code goes here
+```
+
+## 進階選答題
+
+### Problem A
+
+這一題我們會用到R的內建資料集，CO2，你可以用`help(CO2)`查詢該資料內的變項和說明。
+我們現在想要整理這筆資料，計算Treatment和Type兩變項下各四個情境的uptake平均數。
+您可以先用head, plot, unique,
+table等函數看看資料內容，然後用課堂上講到的for迴圈、mean函數來整理資料。
+或者，您也可以不用for迴圈，用R的內建指令或其他套件來完成這個分析。
+
+您分析完成的結果，可能會類似這樣：
+
+```
+   Treatment        Type   uptake
+1 nonchilled      Quebec  <value>
+2    chilled      Quebec  <value>
+3 nonchilled Mississippi  <value>
+4    chilled Mississippi  <value>
+```
+```{r error.custom, echo=TRUE}
+# Your code goes here
+```
+
+### Problem B
+
+以下有一個資料產生函數`rn100()`，每呼叫一次它都會產生出100個數值。
+請重複呼叫他20次，並把這20次的結果分別以不同顏色，繪製成折線圖，並呈現在同一張圖上。
+
+繪出的圖應該會有20條折線，x軸就是1到100，y軸就是函數產生的100個數值。
+
+```{r rn100, echo=FALSE}
+rn100 <- function() cumsum(rnorm(100, 0, 1))
+```
+
+```{r multi.plot, echo=TRUE}
+# your code goes here
+```

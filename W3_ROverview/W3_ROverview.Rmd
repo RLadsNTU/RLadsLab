@@ -112,5 +112,5 @@ help me!!!
 * 若你能用迴圈或其他函數簡化plot的部份，那當然是最好的。
 
 ```{r samples, echo=TRUE}
-# put your codes here
+# put your code here
 ```

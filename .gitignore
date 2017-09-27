@@ -6,3 +6,5 @@
 *~
 *.swp
 *.tmp
+APIKEY.txt
+*.ans.*

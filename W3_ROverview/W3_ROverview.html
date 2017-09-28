@@ -176,31 +176,23 @@ $(document).ready(function () {
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Make a mistake here</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Make a mistake here</span></code></pre></div>
 </div>
-<div class="section level3">
-<h3>進階選答題</h3>
-<p>請讓R丟出一個包含“You are not seeing what I am seeing”的錯誤訊息。 提示：</p>
-<ul>
-<li>錯誤訊息不是「內建」的，它也是某個人寫的東西。所以你也可以寫自己的錯誤訊息。</li>
-<li>你可以搜尋怎麼在R裡面怎麼丟錯誤訊息。</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Make a mistake here</span></code></pre></div>
-</div>
 </div>
 <div id="b.-help-yourself-out" class="section level2">
 <h2>B. Help yourself out</h2>
 <div class="section level3">
 <h3>簡單統計函數</h3>
-<p>課堂上講到如何用help，請用help完成以下幾件事情：</p>
+<p>現在的確還沒有講到函數、資料輸入等，但你已經知道怎麼在R裡求助。請在help的幫助下完成以下問題：</p>
 <ol style="list-style-type: decimal">
 <li><p>我有一筆資料：</p>
-<pre><code>1,2,3,4,5,6,7,8,9,10</code></pre></li>
-<li><p>請用length, sum, mean, sd分別計算出這筆資料的個數、總和、平均以及標準差。</p></li>
+<pre><code>1,2,3,4,5,6,7,8,9,10</code></pre>
+<p>在R裡面要怎麼表達這一個包含10個數字的序列？ 它的輸出結果應該要長得像這樣：</p>
+<pre><code>[1]  1  2  3  4  5  6  7  8  9 10</code></pre></li>
 </ol>
-<p>提示：</p>
-<ul>
-<li>現在的確還沒有講到函數、資料輸入等，但你已經知道怎麼在R裡求助。用help(length)等找找看。</li>
-</ul>
-<p>限制：</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>請用length, sum, mean, sd分別計算出這筆資料的個數、總和、平均以及標準差。<br />
+</li>
+</ol>
 <ul>
 <li>請不要用梯形公式((1+10)*10/2)或直接加總(1+2+3+…)。</li>
 </ul>
@@ -213,15 +205,27 @@ $(document).ready(function () {
 
 <span class="co"># standard deviation</span></code></pre></div>
 </div>
-<div id="-1" class="section level3">
-<h3>進階選答題</h3>
-<p>請用rnorm(n, 0, 1)隨機抽取n個數值（n = 10, 100, 500, 1000, 5000），並計算出這n個數值的平均數，和0之間的差異，再將該差異取絕對值。並以n為橫軸，差異絕對值為縱軸作圖。</p>
+</div>
+<div class="section level2">
+<h2>進階選答題</h2>
+<div id="problem-a." class="section level3">
+<h3>Problem A.</h3>
+<p>請讓R丟出一個包含“You are not seeing what I am seeing”的錯誤訊息。 提示：</p>
+<ul>
+<li>錯誤訊息不是「內建」的，它也是某個人寫的東西。所以你也可以寫自己的錯誤訊息。</li>
+<li>你可以搜尋怎麼在R裡面怎麼丟錯誤訊息。</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Make a mistake here</span></code></pre></div>
+</div>
+<div id="problem-b." class="section level3">
+<h3>Problem B.</h3>
+<p>請用rnorm(n, 0, 1)隨機抽取n個數值（n = 10, 100, 500, 1000, 5000），並計算出這n個數值的平均數，並將該平均數取絕對值。並以n為橫軸，平均數絕對值為縱軸作圖。</p>
 <p>提示：</p>
 <ul>
 <li>這個與現在談到的東西遠一點，但你首先可以找看看怎麼用plot，然後怎麼取絕對值。</li>
-<li>若你能用迴圈或其他函數簡化plot的部份，那當然是最好的。</li>
+<li>你可能會需要用到迴圈或其他函數簡化程式碼，但直接一行行列出來也是可接受的。</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># put your codes here</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here</span></code></pre></div>
 </div>
 </div>
 </div>

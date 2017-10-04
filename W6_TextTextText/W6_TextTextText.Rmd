@@ -1,38 +1,120 @@
 ---
-title: "ROverview"
-output:
-  revealjs::revealjs_presentation:
-    theme: night
-    highlight: pygments
-    center: true
-    transition: none
+title: "[W6] TextTextText"
+output: 
+    html_document:
+        theme: default
+        highlight: pygments
+
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## 試試水溫
-
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
-
-## Slide with Bullets
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
-
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
+```{r env.setup, echo=TRUE, message=FALSE}
+# your environment setup
 ```
 
-## Slide with Plot
+R 語言與資料科學導論作業 (W6)
+=============================
 
-```{r pressure}
-plot(pressure)
+一般系 b96001001 未命名
+
+## Volatile Text (50%)
+
+### CBOE Volatility Settlements
+
+請到以下連結下載CBOE的[Volatility Settlements資料]()。
+這筆資料是個單純的文字檔，內容全部是英數文字。裡面有每週Settlement數值，請把這些資料變成一個data frame。接著，請以日期當橫軸，數值當縱軸做折線圖。
+
+
+### 一、請將資料轉變為data frame。 (35%)
+data frame應該有兩欄。第一欄是日期，第二欄是數值。第一筆數值的日期應該是9/27/2017，最後一筆則是8/5/2015。
+
+#### 評分標準：
+
+* 成功地將文字檔中的日期與數值資料擷取出來 (20%)
+* 將資料格式化為data frame (10%)
+* 資料按照日期（從最近到最舊）排序(5%)
+
+```{r vix.settle, echo=TRUE}
+# your code goes here.
+
+```
+
+### 二、請將該資料作折線圖。
+
+#### 評分標準：
+
+* 資料繪製成折線圖(15%)
+
+```{r vix.graph, echo=TRUE}
+# your code goes here.
+
+```
+
+## Collect the Runes (50%)
+
+### 分析中華職棒比賽的文字記錄
+
+請用以下連結下載某一場中華職棒的比賽[文字記錄]()。裡面的內容分別是每一個半局每個打擊者的記錄。記錄的內容有中文有英文，甚至有標點符號。請你將英數符號去掉，只留下中文字，並把這些中文字整理成一個字頻表data frame。也就是每個字使用了多少次，並且按照頻率從高到低排列。最後請將字頻data frame做圖表示。
+
+
+### 一、製作字頻表 (35%)
+
+#### 評分標準：
+
+* 成功地將文字檔中的中文字，且僅有中文字擷取出來 (20%)
+* 計算字頻 (10%)
+* 將資料格式化為data frame (5%)
+
+```{r hit.runes, echo=TRUE}
+# your code goes here.
+
+```
+
+
+### 二、字頻表作圖 (15%)
+
+#### 評分標準：
+
+* 資料繪製成圖形(15%)
+
+```{r hit.runes.plot, echo=TRUE}
+# your code goes here.
+
+
+```
+
+
+
+## 進階選答題 (25%)
+
+延續上一題的中華職棒文字資料，在這一題我們要進一步挖掘裡面的訊息。當然，
+有很多細微的情境和動力很難從幾千個字中看出來，但這個文字訊息裡，我們還是可以看到
+每個上下半局，有幾個打者上場打擊，什麼時候有人出局，什麼時候有人上壘，什麼時候得分等等。
+如果我們能夠把這些訊息抓取出來，那這段文字就不僅只對我們有意義，對電腦也會有意義。
+
+所以，首先請您試著去剖析這個文字檔，找出規則擷取出以下幾個成分：
+
+* 一局總共有幾棒打者上場。
+* 得分發生在那一局中的第幾個打者。
+* 出局發生在那一局中的第幾個打者。
+* 在每個打者打擊時，哪些壘上有跑者。
+
+請您把這些資料整理出來，格式不拘，但最後請把這些資料視覺化的呈現出來。
+這個圖形必須呈現每個上下半場共幾名打者上場，什麼時候有人出局，以及壘上跑者情形，
+以及該局得分數。這些圖可以放在同一張圖上，或是分開不同的圖皆可。
+以下的圖形僅供參考，您可以用自己的方法將資料視覺化：
+![](play_by_play_ref.png)
+
+#### 評分標準：
+
+* 資料剖析(10%)
+* 資料視覺化(15%)
+
+```{r play.vis, echo=TRUE, dpi=300, fig.height=7, fig.height=7}
+# your code goes here.
+
 ```
 

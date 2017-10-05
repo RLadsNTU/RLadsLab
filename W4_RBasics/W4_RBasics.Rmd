@@ -1,5 +1,5 @@
 ---
-title: "ROverview"
+title: "RBasics"
 output: 
     html_document:
         theme: default
@@ -41,10 +41,20 @@ R 語言與資料科學導論作業 (W4)
 
 假設你的函數名稱也是compute_area，且參數順序是邊長（半徑）和形狀，那以下的結果應該要是一樣的。
 
+```{r func.call.circle, echo=TRUE}
+# call your function (circle), 
+# e.g. circ_ret <- compute_area(6.5, "circle")
+```
+
 ```r
 circ_ret <- compute_area(6.5, "circle")
 ##   circle_area circle_circum 
 ##      132.7323       40.8407
+```
+
+```{r func.call.square, echo=TRUE}
+# call your function (square), 
+# e.g. sqr_ret <- compute_area(5.2, "square")
 ```
 
 ```r

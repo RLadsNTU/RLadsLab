@@ -70,7 +70,7 @@ R 語言與資料科學導論作業 (W5)
 
 注意：
 
-* 若您在這個步驟遇到問題，但仍想嘗試接下來的題目，您可以從[YouBike Demo Data]()開始。但依您的方法不同， 您可能還是需要有資料清理轉換的工作。
+* 若您在這個步驟遇到問題，但仍想嘗試接下來的題目，您可以從[YouBike Demo Data](https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W5_DataWrangling/youbike_demo_data.csv)開始。但依您的方法不同， 您可能還是需要有資料清理轉換的工作。
 * 若使用Demo Data，這一小題視為未作答。
 
 ```{r bike.data, echo=TRUE}
@@ -93,7 +93,10 @@ R 語言與資料科學導論作業 (W5)
 ```
 
 
-### D. 請把站點的位置畫在一張地圖上，並且同時呈現每個站點的空位率（或可使用率）。(5%)
+### D. 請把站點的位置畫在一張地圖上，並且同時呈現每個站點的空位率。(5%)
+
+您可以參考這一張圖，您的結果應該要類似，但空位率資料應該會不同，顏色、地圖樣式也可以自行選擇。
+![](youbike_avail.png)
 
 ```{r bike-map, echo=TRUE}
 # your code goes here.

@@ -44,6 +44,17 @@ R 語言與資料科學導論作業 (W5)
 代表在各年齡組中，所有ncases的總和 (10%)；
 以及sum_ncontrols，代表在各年齡組中，所有ncontrols的總和 (10%)。
 
+最後的結果會類似這樣：
+```
+  agegp sum_ncases sum_ncontrols
+  <ord>      <dbl>         <dbl>
+1 25-34      
+2 35-44      
+3 45-54          (values)
+4 55-64      
+5 65-74      
+6   75+      
+```
 
 ```{r data.age.grp, echo=TRUE}
 # your code goes here
@@ -55,6 +66,21 @@ R 語言與資料科學導論作業 (W5)
 制組數。所以您僅需列出和25-34和45-54有關的資料(10%)。
 * 這張表格應該有8列，並且共有4個變項：前兩個變項是年齡組與酒精使用程度。(10%)
 後兩個變項是所有在該年齡組和酒精使用程度中，其個案數和控制組數的總和(10%)。
+
+最後的結果會類似這樣：
+
+```
+  agegp     alcgp ncases ncontrols
+  <ord>     <ord>  <dbl>     <dbl>
+1 25-34 0-39g/day      
+2 25-34     40-79  
+3 25-34    80-119  
+4 25-34      120+     (values)
+5 45-54 0-39g/day    
+6 45-54     40-79   
+7 45-54    80-119    
+8 45-54      120+   
+```
 
 ```{r data.alc.grp, echo=TRUE}
 # your code goes here
@@ -68,17 +94,34 @@ R 語言與資料科學導論作業 (W5)
 ### A. 把YouBike資料轉為data.frame (10%)
 請你先到[台北YouBike 開放資料](https://goo.gl/KLxuhf)看一下資料描述。其中提到現在的介接網址是<http://data.taipei/youbike>。你可以直接在R裡面把這個檔案下載下來；或者手動把它下載下來後，把JSON格式換成R的data.frame。
 
-注意：
+提示：
 
 * 若您在這個步驟遇到問題，但仍想嘗試接下來的題目，您可以從[YouBike Demo Data](https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W5_DataWrangling/youbike_demo_data.csv)開始。但依您的方法不同， 您可能還是需要有資料清理轉換的工作。
-* 若使用Demo Data，這一小題視為未作答。
+* 以下的code chunk已經載入好Demo Data。但提醒您若使用Demo Data，這一小題視為未作答。若您不需要以下這段程式碼，請直接刪除即可。
+
+```{r bike.demo.data, echo=TRUE, message=FALSE}
+# this code chunk requires readr, install it with 
+# install.packages("readr")
+
+library(readr)
+demo_data_path <- "youbike_demo_data.csv"
+if(file.exists(demo_data_path)){
+    df.bike <- read_csv(demo_data_path, locale=locale(encoding="UTF-8"))
+} else {
+    warning(paste0("Cannot find ", demo_data_path))
+}
+```
 
 ```{r bike.data, echo=TRUE}
 # your code goes here.
 # please display the data frame with proper format.
 ```
 
-### B. 請按照台北各個行政區分組，計算每個行政區內，YouBike站點的平均停車格數、目前車輛數、以及空位數。並且按照空位數（從小到大）排序。(5%)
+### B. 請按照台北各個行政區分組，計算每個行政區內，YouBike運作中站點的平均停車格數、目前車輛數、以及空位數。並且按照空位數（從小到大）排序。(5%)
+
+提示：
+
+* 資料經過A的處理後，應該已經變成一個乾淨的data frame（或tibble），您在這步僅需把幾個變項選取出來，群組、平均、排序即可。記得YouBike資料裡有一欄是全站禁用狀態（act），我們只關心運作中的站點。
 
 ```{r bike-by-area, echo=TRUE}
 # your code goes here.
@@ -86,6 +129,10 @@ R 語言與資料科學導論作業 (W5)
 ```
 
 ### C. 請篩選出空位率最高的5％站點，並且按照他們的空位率（從大到小）排序。(5%)
+
+提示：
+
+* 和上一題相似，但你需要自己計算一個新的欄位（空位率），並且要找出前5%的站點。選出前5%的資料至少有兩種可能的方法：（1）找出5%的空位率是多少，用該值去過濾資料；（2）先把資料按空位率排序之後，只取前5%的資料。兩個想法都是合理的，只是結果可能會些許不同。
 
 ```{r bike-top, echo=TRUE}
 # your code goes here.
@@ -95,16 +142,19 @@ R 語言與資料科學導論作業 (W5)
 
 ### D. 請把站點的位置畫在一張地圖上，並且同時呈現每個站點的空位率。(5%)
 
-您可以參考這一張圖，您的結果應該要類似，但空位率資料應該會不同，顏色、地圖樣式也可以自行選擇。
+
+### 提示：
+
+* R畫圖的套件有很多，這一題只要您找到套件，剩下來就只是怎麼使用的問題。範例圖片用的是ggmap畫的，但類似功能的套件還有不少，如課堂上接觸過的leaflet，它是互動式的地圖，也是滿有趣的選擇。
+
+* 為了統一作業結果，請如範例圖用點的顏色代表空位率，這在上述套件裡應該都可以做到，但方法可能會有些不同。
+
+* 您可以參考這一張圖。您的空位率資料應該會不同，顏色、地圖樣式也可以自行選擇。
 ![](youbike_avail.png)
+
 
 ```{r bike-map, echo=TRUE}
 # your code goes here.
 ```
-
-### 提示：
-
-* 轉資料可能是最瑣碎的一步。你需要知道什麼是JSON檔，R要怎麼處理JSON，以及JSON檔要怎麼變成data.frame。有了data.frame後，剩下的步驟就是一般的處理程序
-* R要呈現地圖訊息相當簡單；你只要找對package，這裡的作圖就只是把經緯度，和我們感興趣的資料畫散佈圖。
 
 

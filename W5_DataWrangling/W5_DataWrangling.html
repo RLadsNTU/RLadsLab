@@ -215,8 +215,18 @@ $(document).ready(function () {
 <p>請你先到<a href="https://goo.gl/KLxuhf">台北YouBike 開放資料</a>看一下資料描述。其中提到現在的介接網址是<a href="http://data.taipei/youbike" class="uri">http://data.taipei/youbike</a>。你可以直接在R裡面把這個檔案下載下來；或者手動把它下載下來後，把JSON格式換成R的data.frame。</p>
 <p>提示：</p>
 <ul>
+<li>轉資料格式、前處理，通常是資料科學裡最麻煩的事情。有時候運氣很好，一個彎轉對了全部風平浪靜； 但有時一個念頭轉錯了，資料會愈用愈亂。有幾個套件<code>rjson</code>、<code>jsonlite</code>、<code>tibble</code>和函數<code>do.call</code>, <code>rbind</code>, <code>as.numeric</code>可能是你會想要參考的。但依作法不同，不見得全部都用得上。</li>
 <li>若您在這個步驟遇到問題，但仍想嘗試接下來的題目，您可以從<a href="https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W5_DataWrangling/youbike_demo_data.csv">YouBike Demo Data</a>開始。但依您的方法不同， 您可能還是需要有資料清理轉換的工作。</li>
-<li>以下的code chunk已經載入好Demo Data。但提醒您若使用Demo Data，這一小題視為未作答。若您不需要以下這段程式碼，請直接刪除即可。</li>
+<li>以下的code chunk會幫您載入Demo Data（但您還是需手動下載Demo Data檔案， 並放在和此檔案同一路徑下）。提醒您若使用Demo Data， 這一小題視為未作答。若您不需要以下這段程式碼，請直接刪除即可。</li>
+<li><p>最後資料整理出來，應該會類似這樣（一些<code>_en</code>結尾的欄位可去除）：</p>
+<pre><code># A tibble: 378 x 11
+ sno                       sna   tot   sbi  sarea                mday      lat      lng
+   &lt;int&gt;                     &lt;chr&gt; &lt;int&gt; &lt;int&gt;  &lt;chr&gt;              &lt;dttm&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+ 1     1     捷運市政府站(3號出口)   180   139 信義區 2017-10-09 03:19:35 25.04086 121.5679
+ 2     2 捷運國父紀念館站(2號出口)    48    31 大安區 2017-10-09 03:19:31 25.04125 121.5574
+ 3     3                台北市政府    40    13 信義區 2017-10-09 03:19:39 25.03780 121.5652
+ 4     4                  市民廣場    60    34 信義區 2017-10-09 03:19:40 25.03604 121.5623
+ ...</code></pre></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># this code chunk requires readr, install it with </span>
 <span class="co"># install.packages(&quot;readr&quot;)</span>

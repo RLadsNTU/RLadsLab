@@ -96,8 +96,23 @@ R 語言與資料科學導論作業 (W5)
 
 提示：
 
+* 轉資料格式、前處理，通常是資料科學裡最麻煩的事情。有時候運氣很好，一個彎轉對了全部風平浪靜；
+但有時一個念頭轉錯了，資料會愈用愈亂。有幾個套件`rjson`、`jsonlite`、`tibble`和函數`do.call`, `rbind`, `as.numeric`可能是你會想要參考的。但依作法不同，不見得全部都用得上。
 * 若您在這個步驟遇到問題，但仍想嘗試接下來的題目，您可以從[YouBike Demo Data](https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W5_DataWrangling/youbike_demo_data.csv)開始。但依您的方法不同， 您可能還是需要有資料清理轉換的工作。
-* 以下的code chunk已經載入好Demo Data。但提醒您若使用Demo Data，這一小題視為未作答。若您不需要以下這段程式碼，請直接刪除即可。
+* 以下的code chunk會幫您載入Demo Data（但您還是需手動下載Demo Data檔案，
+並放在和此檔案同一路徑下）。提醒您若使用Demo Data，
+這一小題視為未作答。若您不需要以下這段程式碼，請直接刪除即可。
+* 最後資料整理出來，應該會類似這樣（一些`_en`結尾的欄位可去除）：
+```
+# A tibble: 378 x 11
+     sno                       sna   tot   sbi  sarea                mday      lat      lng
+   <int>                     <chr> <int> <int>  <chr>              <dttm>    <dbl>    <dbl>
+ 1     1     捷運市政府站(3號出口)   180   139 信義區 2017-10-09 03:19:35 25.04086 121.5679
+ 2     2 捷運國父紀念館站(2號出口)    48    31 大安區 2017-10-09 03:19:31 25.04125 121.5574
+ 3     3                台北市政府    40    13 信義區 2017-10-09 03:19:39 25.03780 121.5652
+ 4     4                  市民廣場    60    34 信義區 2017-10-09 03:19:40 25.03604 121.5623
+ ...
+```
 
 ```{r bike.demo.data, echo=TRUE, message=FALSE}
 # this code chunk requires readr, install it with 

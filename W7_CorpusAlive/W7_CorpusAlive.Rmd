@@ -1,0 +1,110 @@
+---
+title: "[W7] TextAnalytics"
+output: 
+    html_document:
+        theme: default
+        highlight: pygments
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r env.setup, echo=TRUE, message=FALSE, warning=FALSE}
+# your environment setup
+
+```
+
+R 語言與資料科學導論作業 (W7)
+=============================
+
+一般系 b96001001 未命名
+
+## We Are Friends (45%)
+
+### F.R.I.E.N.D.S episode list
+
+「六人行」（[Friends](http://www.imdb.com/title/tt0108778/)）是1994-2004在NBC播出的喜劇影集，描述六名主角Ross, Rachel, Chandler, Monica, Phoebe和Joey在紐約生活的故事。據說，六人行也是很多人學習英文聽力的管道之一。
+
+六人行每集的標題都是以The one with ...開頭。
+請下載[檔案]()，包含六人行共236集的標題名稱。並用課堂上所講到的方法，把每個標題當成一個文件，
+用tm製作一個六人形影集標題語料庫。
+
+
+### 一、請將資料讀入VCorpus。 (15%)
+
+
+```{r friends.read, echo=TRUE}
+# your code goes here.
+```
+
+
+
+### 二、製作TermDocumentMatrix (10%)
+```{r friends.tdm, echo=TRUE}
+# your code goes here.
+```
+
+### 三、找出出現頻率在8次(含)以上的詞，並計算他們的頻率。(20%)
+```{r friends.word.freq, echo=TRUE}
+# your code goes here.
+```
+
+## 總統2017國慶文告 (45%)
+
+### 總統文告
+
+2017年的國慶日難得的有四天假，同學一定有很多的回憶。但我們不能拿同學的回憶錄當文本，
+所以只好拿10/10當天的總統文告當作練習材料。
+
+請在這個[連結]()下載國慶文告文字檔。並請用課堂上的方法，用內建辭典，幫這個文字檔斷詞，並製作出詞頻表。
+
+
+### 一、讀取總統文告文字檔 (10%)
+
+```{r president.read, echo=TRUE}
+# your code goes here.
+```
+
+
+### 二、斷詞 (15%)
+```{r president.seg, echo=TRUE}
+# your code goes here.
+```
+
+### 三、製作詞頻表 (20%)
+```{r president.word.freq, echo=TRUE}
+# your code goes here.
+```
+
+* 請忽略指出現1次的詞。
+* 內建的辭典可能會有很多斷錯的狀況，但這只是練習，請忽略那些錯誤。
+
+
+## 進階選答題 (20%)
+
+延續上一題的幒統文告，我們試試看不要斷詞，看會不會觀察到有趣的事情。這一題我們要用的是二字組（Bigrams），和四字組。
+二字組就是字串中前後連續的兩個字構成的單位。例如「在這句話中」的二字組就是「在這」、「這句」、「句話」、「話中」。
+四字組，以此類推，就是字串中連續出現的四個字構成的單位。
+請用這個方法重新做一次tokenization，並列出結果，並畫出二字組的文字雲。
+
+### 找出所有頻率大於2，且未包含標點符號的五字組 (10%)
+```{r president.tetragram, echo=TRUE}
+# your code goes here.
+
+```
+
+### 找出所有頻率大於5，且未包含標點符號的二字組 (5%)
+```{r president.bigram.expunc, echo=TRUE}
+# your code goes here.
+
+```
+
+### 畫出文字雲 (5%)
+
+```{r president.bigram.wordcloud, echo=TRUE}
+# your code goes here.
+
+```
+

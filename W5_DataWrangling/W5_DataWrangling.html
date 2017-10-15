@@ -215,7 +215,13 @@ $(document).ready(function () {
 <p>請你先到<a href="https://goo.gl/KLxuhf">台北YouBike 開放資料</a>看一下資料描述。其中提到現在的介接網址是<a href="http://data.taipei/youbike" class="uri">http://data.taipei/youbike</a>。你可以直接在R裡面把這個檔案下載下來；或者手動把它下載下來後，把JSON格式換成R的data.frame。</p>
 <blockquote>
 <p>Update (20171015):</p>
-<p>因YouBike開放資料系統維護。若無法從介接網址取得資料，請從此<a href="https://goo.gl/3HqWBa">連結</a>下載201710132314的JSON資料。</p>
+<p>因YouBike開放資料系統維護。若無法從介接網址取得資料，請從此<a href="https://goo.gl/3HqWBa">連結</a>下載201710132314的JSON資料。<br />
+資料格式說明：</p>
+<pre><code>sno：站點代號、sna：場站名稱(中文)、 tot：場站總停車格、 
+sbi：場站目前車輛數量、 sarea：場站區域(中文)、 
+mday：資料更新時間、 lat：緯度、 lng：經度、 ar：地(中文)、 
+sareaen：場站區域(英文)、 snaen：場站名稱(英文)、 aren：地址(英文)、 
+bemp：空位數量、 act：全站禁用狀態</code></pre>
 </blockquote>
 <p>提示：</p>
 <ul>

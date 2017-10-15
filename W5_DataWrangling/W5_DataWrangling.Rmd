@@ -93,6 +93,10 @@ R 語言與資料科學導論作業 (W5)
 ### A. 把YouBike資料轉為data.frame (10%)
 請你先到[台北YouBike 開放資料](https://goo.gl/KLxuhf)看一下資料描述。其中提到現在的介接網址是<http://data.taipei/youbike>。你可以直接在R裡面把這個檔案下載下來；或者手動把它下載下來後，把JSON格式換成R的data.frame。
 
+> Update (20171015):
+>
+> 因YouBike開放資料系統維護。若無法從介接網址取得資料，請從此[連結](https://goo.gl/3HqWBa)下載201710132314的JSON資料。
+
 提示：
 
 * 轉資料格式、前處理，通常是資料科學裡最麻煩的事情。有時候運氣很好，一個彎轉對了全部風平浪靜；

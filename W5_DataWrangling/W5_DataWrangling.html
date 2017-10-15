@@ -158,7 +158,7 @@ $(document).ready(function () {
 <div id="helpesoph-15" class="section level4">
 <h4>一、請先瞭解一下這個資料的內容（<code>help(esoph)</code>）。 (15%)</h4>
 <ul>
-<li>請列出這筆資料的簡單描述統計。如果該筆變項是類別變項，請描述其次數分配；若該筆變項是連續變項，請至少列其中數和平均數。 (10%)</li>
+<li>請用summary()列出這筆資料的簡單描述統計。(10%)</li>
 <li>請找出這個資料集共有幾列資料。 (5%)</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here</span></code></pre></div>
@@ -172,8 +172,8 @@ $(document).ready(function () {
 <div id="-30" class="section level4">
 <h4>三、請做出一個各年齡組的摘要表。 (30%)</h4>
 <ul>
-<li>這張摘要表應有6列，每列分別是一個年齡組 (10%)。</li>
-<li>每列資料除了有年齡組(agegp)這個分組變項外，還需有sum_ncases變項， 代表在各年齡組中，所有ncases的總和 (10%)； 以及sum_ncontrols，代表在各年齡組中，所有ncontrols的總和 (10%)。</li>
+<li>請製作出如下摘要表，呈現各年齡組的個案數和控制組數總和。</li>
+<li>這張摘要表應有6列，每列分別是一個年齡組 (10%)。在年齡組（agegp）變項中，請計算每組的sum_ncases， 代表在各年齡組中，所有ncases的總和 (10%)；以及sum_ncontrols，代表在各年齡組中，所有ncontrols的總和 (10%)。</li>
 </ul>
 <p>最後的結果會類似這樣：</p>
 <pre><code>  agegp sum_ncases sum_ncontrols
@@ -189,8 +189,8 @@ $(document).ready(function () {
 <div id="30" class="section level4">
 <h4>第四、不同酒精使用程度的摘要表。(30%)</h4>
 <ul>
-<li>假設現在僅關心是25-34和45-54兩個年齡組，他們在不同酒精使用程度中的個案數和控 制組數。所以您僅需列出和25-34和45-54有關的資料(10%)。</li>
-<li>這張表格應該有8列，並且共有4個變項：前兩個變項是年齡組與酒精使用程度。(10%) 後兩個變項是所有在該年齡組和酒精使用程度中，其個案數和控制組數的總和(10%)。</li>
+<li>請製作出如下的摘要表。該摘要表呈現的是25-34和45-54兩個年齡組，他們在不同酒精使用程度中的個案數和控 制組數總和。</li>
+<li>您需要將25-34和45-54兩個年齡組的資料取出(10%)，並按照這兩個年齡組個別的酒精使用程度將資料分組(10%)。 最後計算個案數和控制組數的總和(10%)</li>
 </ul>
 <p>最後的結果會類似這樣：</p>
 <pre><code>  agegp     alcgp ncases ncontrols
@@ -213,6 +213,10 @@ $(document).ready(function () {
 <div id="a.-youbikedata.frame-10" class="section level3">
 <h3>A. 把YouBike資料轉為data.frame (10%)</h3>
 <p>請你先到<a href="https://goo.gl/KLxuhf">台北YouBike 開放資料</a>看一下資料描述。其中提到現在的介接網址是<a href="http://data.taipei/youbike" class="uri">http://data.taipei/youbike</a>。你可以直接在R裡面把這個檔案下載下來；或者手動把它下載下來後，把JSON格式換成R的data.frame。</p>
+<blockquote>
+<p>Update (20171015):</p>
+<p>因YouBike開放資料系統維護。若無法從介接網址取得資料，請從此<a href="https://goo.gl/3HqWBa">連結</a>下載201710132314的JSON資料。</p>
+</blockquote>
 <p>提示：</p>
 <ul>
 <li>轉資料格式、前處理，通常是資料科學裡最麻煩的事情。有時候運氣很好，一個彎轉對了全部風平浪靜； 但有時一個念頭轉錯了，資料會愈用愈亂。有幾個套件<code>rjson</code>、<code>jsonlite</code>、<code>tibble</code>和函數<code>do.call</code>, <code>rbind</code>, <code>as.numeric</code>可能是你會想要參考的。但依作法不同，不見得全部都用得上。</li>

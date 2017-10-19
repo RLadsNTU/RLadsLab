@@ -34,10 +34,11 @@ CFE（CBOE Futures Exchange）網站上有一個網頁記錄了VIX期貨的每�
 ### 一、將資料轉變為data frame。 (35%)
 您可以參考以下提示：
 
-1. 文字檔內包含很多訊息，有Monthly Settlement Values和Weekly Settlement Values。我們只需要Weekly Settlements。
-2. 在文字內容中，所有我們需要的每週結算價格都遵循著固定格式，亦即<英文月份>(<月/日/年>):<價格>。而且很幸運的是，
+1. 讀取文字檔的方法可以透過內建函數或套件。您可以參考`readr`裡面的`read_file`函數，它可以把整個檔案內容讀成一個字串。
+2. 文字檔內包含很多訊息，有Monthly Settlement Values和Weekly Settlement Values。我們只需要Weekly Settlements。
+3. 在文字內容中，所有我們需要的每週結算價格都遵循著固定格式，亦即<英文月份>(<月/日/年>):<價格>。而且很幸運的是，
 整份檔案也只有每週結算價格有這種格式。
-3. 所以我們只要能用RegEx抽取出具有上述格式的文字，我們就能得到需要的資料。
+4. 所以我們只要能用RegEx抽取出具有上述格式的文字，我們就能得到需要的資料。
 
 最後的data.frame應該會類似以下格式：
 ```

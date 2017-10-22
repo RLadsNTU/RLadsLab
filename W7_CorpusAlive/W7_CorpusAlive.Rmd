@@ -28,7 +28,7 @@ R 語言與資料科學導論作業 (W7)
 「六人行」（[Friends](http://www.imdb.com/title/tt0108778/)）是1994-2004在NBC播出的喜劇影集，描述六名主角Ross, Rachel, Chandler, Monica, Phoebe和Joey在紐約生活的故事。據說，六人行也是很多人學習英文聽力的管道之一。
 
 六人行每集的標題都是以The one with ...開頭。
-請下載[檔案](https://github.com/RLadsNTU/RLadsLab/blob/master/W7_CorpusAlive/friends_episodes.txt)，包含六人行共236集的標題名稱。並用課堂上所講到的方法，把每個標題當成一個文件，
+請下載[檔案](https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W7_CorpusAlive/friends_episodes.txt)，包含六人行共236集的標題名稱。並用課堂上所講到的方法，把每個標題當成一個文件，
 用tm製作一個六人形影集標題語料庫。
 
 
@@ -55,7 +55,7 @@ R 語言與資料科學導論作業 (W7)
 2017年的國慶日難得的有四天假，同學一定有很多的回憶。但我們不能拿同學的回憶錄當文本，
 所以只好拿10/10當天的總統文告當作練習材料。
 
-請在這個[連結](https://github.com/RLadsNTU/RLadsLab/blob/master/W7_CorpusAlive/president_20171010.txt)下載國慶文告文字檔。並請用課堂上的方法，用內建辭典，幫這個文字檔斷詞，並製作出詞頻表。
+請在這個[連結](https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W7_CorpusAlive/president_20171010.txt)下載國慶文告文字檔。並請用課堂上的方法，用內建辭典，幫這個文字檔斷詞，並製作出詞頻表。
 
 
 ### 一、讀取總統文告文字檔 (10%)

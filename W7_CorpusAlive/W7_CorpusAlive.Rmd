@@ -21,7 +21,7 @@ R 語言與資料科學導論作業 (W7)
 
 一般系 b96001001 未命名
 
-## We Are Friends (45%)
+## We Are Friends (50%)
 
 ### F.R.I.E.N.D.S episode list
 
@@ -32,14 +32,11 @@ R 語言與資料科學導論作業 (W7)
 用tm製作一個六人形影集標題語料庫。
 
 
-### 一、請將資料讀入VCorpus。 (15%)
-
+### 一、請將資料讀入VCorpus。 (20%)
 
 ```{r friends.read, echo=TRUE}
 # your code goes here.
 ```
-
-
 
 ### 二、製作TermDocumentMatrix (10%)
 ```{r friends.tdm, echo=TRUE}
@@ -78,7 +75,7 @@ R 語言與資料科學導論作業 (W7)
 # your code goes here.
 ```
 
-* 請忽略指出現1次的詞。
+* 請忽略只出現5次的詞。
 * 內建的辭典可能會有很多斷錯的狀況，但這只是練習，請忽略那些錯誤。
 
 

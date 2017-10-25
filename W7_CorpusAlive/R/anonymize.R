@@ -1,10 +1,3 @@
-# usage:
-# assume text is loaded in _text_ by lines
-# e1 = new.env()
-# lapply(text, function(x){anonymize, e1})
-# user_map = e1$user_map
-# 
-
 anonymize_text = function(fpath, enc="UTF-8"){
     lines = readLines(fpath, encoding=enc)
     e1 = new.env()

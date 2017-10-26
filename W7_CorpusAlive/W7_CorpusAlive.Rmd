@@ -38,7 +38,7 @@ R 語言與資料科學導論作業 (W7)
 1. 讀入文字檔，若您用`read_file`函數讀文字檔，記得用`strsplit`將每一行都分開來。 (10%)
 2. 將所有英文字都變成小寫，你可能會用到的函數是`content_transformer(tolower)`。 (10%)
 3. 為了讓一個詞的詞頻能包含其各種詞形變化，我們需要做stemming，您可以參考`stemDocument` (10%)
-4. 在這個分析中，我們並不在意高頻詞的出現次數（例如the, of, with, one）。
+4. 在這個分析中，我們並不在意高頻詞的出現次數（例如the, of, with）。
 所以請用`removeWords`和`stopwords("english")`把英文高頻詞移除。 (10%)
 
 ```{r friends.read, echo=TRUE}

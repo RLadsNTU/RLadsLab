@@ -1,0 +1,47 @@
+---
+title: "VIX Settlements (Monthly)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readr)
+```
+
+## Extract monthly data from VIX Futures Data
+
+* 此範例提供RegEx和資料的擷取方法。注意以下方式並**未**區分不同年度的月份，所以每一個月份會有2-3個值。
+* lapply 負責將字串處理函數套用到每行文字內容中。
+* regexec 同時可匹配(match) 符合的字串，並用capture groups取出該段資訊。
+
+```{r vix.regex}
+# your code goes here.
+vix_text <- read_file("data/VIX_20171003.txt")
+vix_lines <- strsplit(vix_text, "\n")[[1]]
+vix_data <- lapply(vix_lines, function(ln){
+    m <- regexec("([A-Z]+):([\\d\\.]+)", ln, perl=T)
+    if(m[[1]][1] < 0) return(NULL)
+    toks = regmatches(ln, m)[[1]]
+    ret <- c(month=toks[2], settle=as.numeric(toks[3]))
+    return(ret)
+})
+
+vix.df = as.data.frame(do.call(rbind, vix_data))
+vix.df <- vix.df[order(vix.df$month, decreasing=TRUE),]
+rownames(vix.df) <- NULL
+vix.df
+```
+
+# 將月份按照1到12月排序
+
+* 同上述，這個資料集未區分不同年度的月份，故每個月份會有2-3個在不同年份的值。
+
+```{r vix.ordered}
+months <- c("JANUARY", "FEBRUARY", "MARCH", "APRIL",
+  "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER",
+  "OCTOBER", "NOVEMBER", "DECEMBER")
+vix.df$month = factor(vix.df$month, levels=months, ordered=TRUE)
+vix.df <- vix.df[order(vix.df$month), ]
+rownames(vix.df) <- NULL
+vix.df
+
+```

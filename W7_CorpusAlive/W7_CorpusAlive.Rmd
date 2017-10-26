@@ -27,7 +27,7 @@ R 語言與資料科學導論作業 (W7)
 「六人行」（[Friends](http://www.imdb.com/title/tt0108778/)）是1994-2004在NBC播出的喜劇影集，描述六名主角Ross, Rachel, Chandler, Monica, Phoebe和Joey在紐約生活的故事。據說，六人行也是很多人學習英文聽力的管道之一。
 
 六人行每集的標題都是以The one with ...開頭。
-請下載[檔案](https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W7_CorpusAlive/friends_episodes.txt)，包含六人行共236集的標題名稱。並用課堂上所講到的方法，把每個標題當成一個文件，
+請下載[檔案](https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W7_CorpusAlive/friends_episodes.txt)，包含六人行共236集的標題名稱。並用課堂上所講到的方法（或參考[LetItGo](LetItGo.Rmd)範例），把每個標題當成一個文件，
 用tm製作一個六人形影集標題語料庫。
 
 
@@ -35,7 +35,7 @@ R 語言與資料科學導論作業 (W7)
 
 請您依序完成以下步驟：
 
-1. 讀入文字檔，並用`strsplit`將每一行都分開來。 (10%)
+1. 讀入文字檔，若您用`read_file`函數讀文字檔，記得用`strsplit`將每一行都分開來。 (10%)
 2. 將所有英文字都變成小寫，你可能會用到的函數是`content_transformer(tolower)`。 (10%)
 3. 為了讓一個詞的詞頻能包含其各種詞形變化，我們需要做stemming，您可以參考`stemDocument` (10%)
 4. 在這個分析中，我們並不在意高頻詞的出現次數（例如the, of, with, one）。
@@ -60,7 +60,7 @@ inspect(vc[1:5])
 
 當您準備好文章詞彙矩陣後之後，請用以下這行指令把結果呈現出來：
 ```{r friends.dtm.res, echo=TRUE, error=TRUE}
-# assuming the variable for TermDocumentMatrix is `dtm`
+# assuming the variable for DocumentTermMatrix is `dtm`
 inspect(dtm)
 ```
 

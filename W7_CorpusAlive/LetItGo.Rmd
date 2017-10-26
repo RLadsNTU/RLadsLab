@@ -1,0 +1,39 @@
+---
+title: "Let It Go Lyrics (By line corpus)"
+output: html_document
+---
+
+```{r setup, echo=TRUE}
+library(readr)
+library(magrittr)
+library(tm)
+```
+
+# 將歌詞讀入變項
+
+```{r lyrics, echo=TRUE}
+lyrics <- read_file("LetItGo.txt")
+lyrics_lines <- strsplit(lyrics, "\n")[[1]]
+vc <- VCorpus(VectorSource(lyrics_lines)) %>%
+      tm_map(content_transformer(tolower)) %>%
+      tm_map(stemDocument) %>%
+      tm_map(removeWords, stopwords("english"))
+vc
+inspect(vc[1:5])
+```
+
+# 製作文章詞彙矩陣
+
+```{r lyrics.dtm, echo=TRUE}
+dtm <- DocumentTermMatrix(vc)
+inspect(dtm)
+```
+
+# 找出出現次數在2以上的詞彙
+
+```{r lyrics.freq.terms, echo=TRUE}
+freq_terms <- findFreqTerms(dtm, 2)
+freq_vec <- sapply(freq_terms, function(x){sum(dtm[, x])})
+freq_vec <- freq_vec[order(-freq_vec)]
+freq_vec
+```

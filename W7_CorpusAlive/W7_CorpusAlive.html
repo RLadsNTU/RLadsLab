@@ -152,21 +152,21 @@ $(document).ready(function () {
 <div id="r--w7" class="section level1">
 <h1>R 語言與資料科學導論作業 (W7)</h1>
 <p>一般系 b96001001 未命名</p>
-<div id="we-are-friends-50" class="section level2">
-<h2>We Are Friends (50%)</h2>
+<div id="we-are-friends-95" class="section level2">
+<h2>We Are Friends (95%)</h2>
 <div id="f.r.i.e.n.d.s-episode-list" class="section level3">
 <h3>F.R.I.E.N.D.S episode list</h3>
 <p>「六人行」（<a href="http://www.imdb.com/title/tt0108778/">Friends</a>）是1994-2004在NBC播出的喜劇影集，描述六名主角Ross, Rachel, Chandler, Monica, Phoebe和Joey在紐約生活的故事。據說，六人行也是很多人學習英文聽力的管道之一。</p>
 <p>六人行每集的標題都是以The one with …開頭。 請下載<a href="https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W7_CorpusAlive/friends_episodes.txt">檔案</a>，包含六人行共236集的標題名稱。並用課堂上所講到的方法，把每個標題當成一個文件， 用tm製作一個六人形影集標題語料庫。</p>
 </div>
-<div id="vcorpus-20" class="section level3">
-<h3>一、請將資料讀入VCorpus。 (20%)</h3>
+<div id="vcorpus-40" class="section level3">
+<h3>一、請將資料讀入VCorpus。 (40%)</h3>
 <p>請您依序完成以下步驟：</p>
 <ol style="list-style-type: decimal">
-<li>讀入文字檔，並用<code>strsplit</code>將每一行都分開來。 (5%)</li>
-<li>將所有英文字都變成小寫，你可能會用到的函數是<code>content_transformer(tolower)</code>。 (5%)</li>
-<li>為了讓一個詞的詞頻能包含其各種詞形變化，我們需要做stemming，您可以參考<code>stemDocument</code> (5%)</li>
-<li>在這個分析中，我們並不在意高頻詞的出現次數（例如the, of, with, one）。 所以請用<code>removeWords</code>和<code>stopwords(&quot;english&quot;)</code>把英文高頻詞移除。 (5%)</li>
+<li>讀入文字檔，並用<code>strsplit</code>將每一行都分開來。 (10%)</li>
+<li>將所有英文字都變成小寫，你可能會用到的函數是<code>content_transformer(tolower)</code>。 (10%)</li>
+<li>為了讓一個詞的詞頻能包含其各種詞形變化，我們需要做stemming，您可以參考<code>stemDocument</code> (10%)</li>
+<li>在這個分析中，我們並不在意高頻詞的出現次數（例如the, of, with, one）。 所以請用<code>removeWords</code>和<code>stopwords(&quot;english&quot;)</code>把英文高頻詞移除。 (10%)</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here.</span></code></pre></div>
 <p>當您準備好VCorpus之後，請用以下這兩行指令把結果呈現出來：</p>
@@ -176,59 +176,22 @@ vc</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">inspect</span>(vc[<span class="dv">1</span>:<span class="dv">5</span>])</code></pre></div>
 <pre><code>## Error in inspect(vc[1:5]): could not find function &quot;inspect&quot;</code></pre>
 </div>
-<div id="termdocumentmatrix-10" class="section level3">
-<h3>二、製作詞彙文章矩陣（TermDocumentMatrix） (10%)</h3>
+<div id="termdocumentmatrix-15" class="section level3">
+<h3>二、製作詞彙文章矩陣（TermDocumentMatrix） (15%)</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here.</span></code></pre></div>
 <p>當您準備好詞彙文章矩陣後之後，請用以下這行指令把結果呈現出來：</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># assuming the variable for TermDocumentMatrix is `dtm`</span>
 <span class="kw">inspect</span>(dtm)</code></pre></div>
 <pre><code>## Error in inspect(dtm): could not find function &quot;inspect&quot;</code></pre>
 </div>
-<div id="820" class="section level3">
-<h3>三、找出在這份語料中，出現頻率在8次(含)以上的詞，並計算他們的頻率。(20%)</h3>
+<div id="840" class="section level3">
+<h3>三、找出在這份語料中，出現頻率在8次(含)以上的詞，並計算他們的頻率。(40%)</h3>
 <p>提示：</p>
 <ol style="list-style-type: decimal">
 <li><code>tm</code>的詞彙文章矩陣是一個稀疏矩陣（sparse matrix），不適用於<code>colSums</code>和<code>rowSums</code>。</li>
-<li>您可以試試看<code>findFreqTerm</code>，在語料庫中尋找常出現的詞彙。</li>
-<li>當您找到所有的常用詞彙後，把這些詞彙在矩陣中的次數挑選出來（透過indexing），並加總得到其頻率。</li>
-<li>最後請把這些詞彙按照出現次數，由高到低順序呈現出來。</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here.</span></code></pre></div>
-</div>
-</div>
-<div id="ptt45" class="section level2">
-<h2>PTT推噓文統計(45%)</h2>
-<p>PTT的文章結構大家應該都很熟悉：一篇文章包含標題作者、內文、發信IP、推噓文等。請下載這一篇在movie版中的 <a href="https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W7_CorpusAlive/ptt_movie.anony.txt">文章</a>， 並分析這篇文章的推噓文個數，以及在推文裡說「好看」的次數。此篇文章已經全部匿名處理，使用者ID已全部換成user###。</p>
-<div id="20" class="section level3">
-<h3>一、計算該篇文章的推噓文數(20%)</h3>
-<p>提示：</p>
-<ol style="list-style-type: decimal">
-<li>請將文章內容讀進R，並一行一行的儲存在文字陣列中。</li>
-<li>所有推噓文的格式都非常固定。尤其在這篇文章中，只要開頭是「推」或「噓」，則該行一定就是推噓文。</li>
-<li>我們現在想知道的是每一行有沒有符合推噓文的型態（pattern），而不是該型態出現在文字中的哪個部分。 您可能會用到的函數是<code>grepl</code>或<code>grep</code>。</li>
-<li>請計算出推文個數。 (10%)</li>
-<li>請計算出噓文個數。 (10%)</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here.</span></code></pre></div>
-</div>
-<div id="-10" class="section level3">
-<h3>二、找出在推文說「好看」的次數 (10%)</h3>
-<p>提示：</p>
-<ol style="list-style-type: decimal">
-<li>由於這篇文章是在談論電影，所以很多推文會提到「好看」，「滿好看」等，請計算有「好看」這兩個字出現的推文數。</li>
-<li>這篇文章中剛好有一個推文講到「不好看」；既然這只是練習，您可以不要管他。 但如果有興趣的話，您可以找看看怎麼在RegEx中排除掉「不好看」的例子。</li>
-<li>最後請呈現推文中說「好看」的次數。 (10%)</li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here.</span></code></pre></div>
-</div>
-<div id="id-10" class="section level3">
-<h3>三、列出所有說「好看」的ID (10%)</h3>
-<p>提示：</p>
-<ol style="list-style-type: decimal">
-<li>上一題已經找出有哪些推文有「好看」出現。請把這些推文過濾出來，然後再用Regex找一次這些推文中的ID。</li>
-<li>推文ID的格式也非常固定，它一定遵循以下格式： <code>推 &lt;user id&gt;: &lt;推文內容&gt;。</code>您只要能找出這個RegEx型態，推文ID就很容易取得。</li>
-<li>甚至，由於這個檔案已經將ID匿名處理，所有ID的格式都相同，您也可以直接從該格式（<user###>）設計RegEx型態。</li>
-<li>最後請列出所有在推文說「好看」的ID。 (10%)</li>
+<li>您可以試試看<code>findFreqTerm</code>，在語料庫中尋找常出現的詞彙。 (10%)</li>
+<li>當您找到所有的常用詞彙後，把這些詞彙在矩陣中的次數挑選出來（透過indexing），並加總得到其頻率。 (20%)</li>
+<li>最後請把這些詞彙按照出現次數，由高到低順序呈現出來。 (10%)</li>
 </ol>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here.</span></code></pre></div>
 </div>

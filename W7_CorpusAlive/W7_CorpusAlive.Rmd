@@ -90,7 +90,7 @@ inspect(dtm)
 * 請忽略出現次數在5次以下的詞。
 * 內建的辭典可能會有很多斷錯的狀況，但這只是練習，請忽略那些錯誤。
 
-### 一、斷詞 (5%)
+### 一、斷詞 (10%)
 ```{r president.seg, echo=TRUE}
 # your code goes here.
 

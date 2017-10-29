@@ -73,6 +73,9 @@ inspect(dtm)
 3. 當您找到所有的常用詞彙後，把這些詞彙在矩陣中的次數挑選出來（透過indexing）
 ，並將每個詞彙的次數各自加總，之後得到每個詞彙的出現次數。(20%)
 4. 最後請把這些詞彙按照出現次數，由高到低順序呈現出來。 (10%)
+5. (Update: 20171029) 由於語料經過Stemming，所以最後的結果可能不是一般習慣的「詞」。
+例如phoebe經過Stemming會變成phoeb，這是正常的結果。若您有興趣知道為什麼會這樣
+，可以參考[Wikipedia](https://en.wikipedia.org/wiki/Stemming)。
 
 ```{r friends.word.freq, echo=TRUE}
 # your code goes here.

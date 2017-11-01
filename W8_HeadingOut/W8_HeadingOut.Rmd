@@ -19,7 +19,7 @@ R 語言與資料科學導論作業 (W8)
 
 ## API 大千世界 (100%)
 
-在這份作業中，請您試試看用`httr`套件幫您發送API請求（request）以及剖析（parsing）。請您嘗試2種不同的API，從課堂上講到的httpbins、總統公開行程、維基百科，或各種公開的JSON API資料都可以。但為了您的帳號安全以及減輕同學負擔，請不要在作業中嘗試需要認證的API。
+在這份作業中，請您試試看用`httr`套件幫您發送API請求（request）以及剖析（parsing）。請您嘗試2種不同的API，從課堂上講到的httpbin、總統公開行程、維基百科，或各種公開的JSON API資料都可以。但為了您的帳號安全以及減輕同學負擔，請不要在作業中嘗試需要認證的API。
 
 如果您還想知道世界上有哪些公開資源，Justin Dorfman編纂了一個[Awesome-json-datasets](https://github.com/jdorfman/awesome-json-datasets)，裡面有很多豐富的JSON API。
 更重要的是，該清單裡面的API都不需要經過認證程序，所以最難的地方已經解決了。

@@ -1,38 +1,51 @@
 ---
-title: "ROverview"
-output:
-  revealjs::revealjs_presentation:
-    theme: night
-    highlight: pygments
-    center: true
-    transition: none
+title: "[W8] Heading Out"
+output: 
+    html_document:
+        theme: default
+        highlight: pygments
+
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r env.setup, echo=TRUE, message=FALSE, warning=FALSE}
+# your environment setup
+library(httr)
 ```
 
-## 試試水溫
+R 語言與資料科學導論作業 (W8)
+=============================
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+一般系 b96001001 未命名
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+## API 大千世界 (100%)
 
-## Slide with Bullets
+在這份作業中，請您試試看用`httr`套件幫您發送API請求（request）以及剖析（parsing）。請您嘗試2種不同的API，從課堂上講到的httpbins、總統公開行程、維基百科，或各種公開的JSON API資料都可以。但為了您的帳號安全以及減輕同學負擔，請不要在作業中嘗試需要認證的API。
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+如果您還想知道世界上有哪些公開資源，Justin Dorfman編纂了一個[Awesome-json-datasets](https://github.com/jdorfman/awesome-json-datasets)，裡面有很多豐富的JSON API。
+更重要的是，該清單裡面的API都不需要經過認證程序，所以最難的地方已經解決了。
 
-## Slide with R Output
+請按照以下範例試試看，請記得將URL改成您自己感興趣的JSON API Endpoint。
 
-```{r cars, echo = TRUE}
-summary(cars)
+## API 探險範例
+```{r api.example}
+# world population
+resp.ex <- GET("http://api.population.io/1.0/population/World/today-and-tomorrow/?format=json")
+if (status_code(resp.ex)==200){
+    jsobj.ex <- content(resp.ex)
+    str(jsobj.ex)
+} else {
+    warning("response status: %d", status_code(resp.ex))
+}
 ```
 
-## Slide with Plot
+## API 探險 Alpha (50%)
+```{r api.1}
+# your adventure starts here
+```
 
-```{r pressure}
-plot(pressure)
+
+## API 探險 Beta (50%)
+```{r api.2}
+# your adventure starts here
 ```
 

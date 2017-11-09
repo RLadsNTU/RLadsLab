@@ -1,0 +1,271 @@
+---
+title: "R語言與資料科學導論期中考（2017 Autumn）"
+author: "b01001001 一般系 未命名"
+output: 
+    html_document:
+        theme: default
+        highlight: pygments
+
+---
+
+### 注意事項：
+* 請記得在上方的author處，寫下您的學號、學系、姓名
+* 作答過程中，您可以自由查閱各種資料：課堂講義、網路資源、個人檔案、筆記等材料。但**「不能」**向其他人尋求協助。
+* 每一題都已經預留作答的程式區塊（code chunks，區塊名稱為ans.#.#）。除第二大題的2.2有2個區塊外，每一小題都各有一個區塊。
+為了讓每份答卷格式統一，請您不要自行增加、刪除程式區塊。
+* 所有題目都必須要在程式區塊中詳列作答過程。
+* 請注意每一題輸出的格式要求。作圖題皆須加上圖形的主標題和X或Y軸標籤。
+在第二大題中，除2.2的第一小題是輸出圖形(plot)外，每個程式區塊都有用來印出答案的程式碼，請用它們來呈現答案。感謝配合。
+* 答卷繳交方式如同一般作業，請您將整份檔案knit成HTML檔後上傳CEIBA。
+
+
+```{r setup, message=FALSE}
+knitr::opts_chunk$set(echo=TRUE, error=TRUE)
+```
+
+```{r env.setup, echo=TRUE, message=FALSE, warning=FALSE}
+library(httr)
+library(readr)
+library(dplyr)
+library(jiebaR)
+```
+
+# 一、程式碼填空（40%）
+
+在這一大題中，每一題都已經有大部分的程式結構，您只需要把有些空白的部分（如<BLANK.1.1>），
+代換成正確的程式碼，讓整段程式可以正確執行。
+
+**請把整段程式複製到作答區，並把所有的空白處代換成正確的程式碼。請勿更改非空白部分（<BLANK.#.#>以外的部分）的程式碼**
+
+## 1.0 作答範例
+
+`data.1`有5個數值，請算出他們的平均數。
+```
+data.1 <- c(10,12,16,20,14)
+avg <- <BLANK.0.1>(data.1)
+print(avg)
+```
+
+請把上述整段程式複製到以下的作答區，並把<BLANK.0.1>代換成正確的程式碼（`mean`）即可。
+
+```{r ans.1.0}
+data.1 <- c(10,12,16,20,14)
+avg <- mean(data.1)
+print(avg)
+```
+
+## 1.1 條件式 (5%)
+
+請完成以下 `pick_apple` 函數。該函數只有一個參數，當參數是"apple"時（即`pick_apple("apple")`），
+函數要回傳 `"apple found"`；若是所有其他的字串，則函數要回傳 `"nothing"`。
+
+```
+pick_apple <- function(argStr){
+    if (<BLANK.1.1>) { 
+        return(<BLANK.1.2>) 
+    } else { 
+        return(<BLANK.1.3>) 
+    }
+}
+pick_apple("apple")
+```
+
+```{r ans.1.1}
+# copy-paste the code above and fill out the blank
+```
+
+
+## 1.2 散佈圖(5%)
+
+請用內建的`mtcars`資料集，畫出mpg變項（X軸）與hp變項（Y軸）的散佈圖。
+散佈圖中的每一個點都是實心的藍色。
+這張散佈圖需有標題 `"Scatter plot of Miles/gallon and Hourse Power"`，
+X軸標籤 `"Miles/gallon"` ，
+Y軸標籤 `"Horsepower"`。
+
+```
+plot(<BLANK.2.1>, <BLANK.2.2>, 
+     <BLANK.2.3>="Miles/gallon", <BLANK.2.4>="Horsepower", 
+     <BLANK.2.5>="Scatter plot of Miles/gallon and Hourse Power", 
+     <BLANK.2.6>="blue", pch=16)
+```
+
+```{r ans.1.2}
+# copy-paste the code above and fill out the blank
+```
+
+## 1.3 資料篩選（filter）(5%)
+
+請用dplyr選出內建資料集`Orange`的`Tree`和`circumference`兩個變項，
+並篩選出所有`Tree`變項的值是3的資料。
+
+```
+Orange %>% 
+    <BLANK.3.1>(Tree, circumference) %>%
+    <BLANK.3.2>(Tree == 3)
+```
+
+```{r ans.1.3}
+# copy-paste the code above and fill out the blank
+
+```
+
+## 1.4 資料分組與摘要（grouping）(5%)
+
+請用dplyr對內建資料集`Orange`的`Tree`變項分組，
+並找出每組最大的周長（`circumference`變項）及最小周長的差異。
+最後將結果按照周長的差異由大到小排序。
+
+```
+Orange %>%
+    <BLANK.4.1>(Tree) %>%
+    <BLANK.4.2>(cir.diff=max(circumference)-<BLANK.4.3>(circumference)) %>%
+    <BLANK.4.4>(desc(cir.diff))
+```
+
+```{r ans.1.4}
+# copy-paste the code above and fill out the blank
+```
+
+## 1.5 字串擷取與分割（split）(5%)
+
+`textStr`字串中包含電話與EMail，請先用逗號分割字串，並取出其中的電話號碼。
+
+```
+textStr <- "Alice, Taiwan, TEL:02-33663366, EMail: anonymous@ntu.edu.tw"
+# split the string
+fieldValues <- <BLANK.5.1>(textStr, <BLANK.5.2>)[[1]]
+
+# extract the substring
+TEL <- <BLANK.5.3>(fieldValues[3], 6, <BLANK.5.4>(fieldValues[3]))
+
+print(sprintf("telephone number: %s", TEL))
+```
+
+```{r ans.1.5}
+# copy-paste the code above and fill out the blank
+```
+
+
+## 1.6 用RegEx找出符合學號格式的字串(5%)
+
+以下的`data.id.vec`有5個字串，其中第1、第2、第4個字串符合學號格式。請在<BLANK.6.1>寫出一個符合，且僅符合這三個字串的RegEx。
+
+```
+data.id.vec <- c("b52123045", "b31a01221", "b12z03013", "b24054365", "breeze002")
+grep(<BLANK.6.1>, data.id.vec, value=T)
+```
+
+```{r ans.1.6}
+# copy-paste the code above and fill out the blank
+```
+
+## 1.7 用RegEx找出字串中的股票代號 (5%)
+
+`fin.news`字串中共有5個股票代號（i.e. AAPL, AMZN, FB, GOOGL, MSFT）。請用RegEx擷取出如 `(AAPL,`的字串，`sapply`那一行會負責從`(AAPL,`取出`AAPL`。
+
+```
+fin.news <- "Shares of Apple (AAPL, Tech30), which is getting fairly solid reviews for its new iPhone X, are now up 45% this year. Amazon (AMZN, Tech30) has surged nearly 50% while Facebook (FB, Tech30) is up more than 55%. Alphabet (GOOGL, Tech30)and Microsoft (MSFT, Tech30) are both up more than 30% too."
+
+# find the pattern with `gregexpr` and extract the matched string with a function
+stock.symbols <- <BLANK.7.1>(fin.news, gregexpr(<BLANK.7.2>, fin.news))[[1]]
+sapply(stock.symbols, function(x) substr(x, 2, nchar(x)-1), USE.NAMES=FALSE)
+```
+
+```{r ans.1.7}
+# copy-paste the code above and fill out the blank
+```
+
+
+## 1.8 用Web API擷取JSON資料 (5%)
+
+```
+# resp is a response object returned from a function in httr package
+resp <- <BLANK.8.1>("https://httpbin.org/get")
+
+# jsobj is the content of `resp`
+jsobj <- <BLANK.8.2>(resp)
+
+sprintf("Request origin: %s", jsobj$origin)
+```
+
+```{r ans.1.8}
+# copy-paste the code above and fill out the blank
+```
+
+# 二、資料分析（60%）
+
+## 2.1 內建函數 (10%)
+
+`score.data`裡共有12筆資料，我們想要對每筆分數用開根號乘以10調分。請將調整後的分數存為`trans.data`變項，
+並分別計算`score.data`和`trans.data`的平均數。
+
+`score.data <- c(80, 60, 40, 36, 88, 55, 65, 59, 75, 45, 66, 30)`
+
+```{r ans.2.1}
+# please put your answer here
+
+# please show the results with the line below
+sprintf("Original average: %.2f, transformed average: %.2f", mean(score.data), mean(trans.data))
+```
+
+## 2.2 數值資料分析 (20%)
+
+這題會使用到內建資料集mtcars，以及裡面的汽缸數（cyl），和馬力（hp）變項。請完成以下2個問題：
+
+1. 這筆資料共有32款車。請畫出所有車子的馬力直方圖（histogram）。該直方圖必須有主標題 `Histogram of horsepower in mtcars`，以及X軸標籤 `Horsepower`。
+
+```{r ans.2.2.1}
+# please put your answer here
+# this code chunk should have a figure output
+```
+
+2. 在資料集中，共有4、6、8三種不同的汽缸數。請整理出一個3 x 3的資料表（請命名為df.hp，並用tibble呈現）。表格的列（row）是三種（4、6、8）不同的汽缸數，表格的欄（column）分別是（1）配備該汽缸數的車子有幾款（變項名稱請用`n`），以及這些車的（2）馬力平均數（變項名稱請用`hp_avg`），和（3）馬力的標準差（變項名稱請用`hp_std`）。
+
+```{r ans.2.2.2}
+# please put your answer here
+
+# please show the results with the line below
+print(df.hp)
+```
+
+## 2.3 分析NASA Server log (20%)
+
+這題將使用一個伺服器記錄文字檔 `access_log_nasa_95_1k.txt`，它是1995年7月NASA WWW伺服器的存取記錄(access log)。
+該檔案只擷取全部記錄的前1000行，每一行就是一筆存取記錄，其格式如下：
+```
+<來源> - - [<時間>] "<方法> <路徑> <通訊協定>" <狀態> <回應大小>
+burger.letters.com - - [01/Jul/1995:00:18:45 -0400] "GET /images/NASA-logosmall.gif HTTP/1.0" 304 0
+```
+
+請您完成以下問題：
+
+1. 請找出「路徑」欄位包含 `/images/` （可能在路徑的開頭或中間）的記錄共有幾行（請將結果命名為變數`n.images`）。
+2. 請找出「來源」欄位是以`.jp`結尾的記錄共有幾行（請將結果命名為變數`n.jp`）。
+請注意有些「路徑」欄位中包含.jpg，但他們不該算入此題的行數。
+
+
+```{r ans.2.3}
+# please put your answer here
+
+# please show the results with the line below
+item2.ans <- paste(
+    sprintf("number of requests where '/images/' was in url: %d", n.images),
+    sprintf("                   where source originated from jp: %d", n.jp), sep="\n")
+cat(item2.ans)
+
+```
+
+## 2.4 請下載文本並計算詞頻 (10%)
+
+這題將使用一首歌的歌詞當作文本（lyrics.txt）。該文本是以UTF-8編碼的中文文字檔。請您按照以下步驟計算每個詞的使用次數：
+
+* 請用jiebaR的內建辭典斷詞，並計算每個詞的出現次數。
+* 請將詞和其出現次數製作成一個資料表（請用tibble資料表，並命名為df.lyrics），資料表的每一列（row）就是一個詞。該資料表共有兩欄，第一欄（column）是詞字串本身（如你、我、的），請將它命名為`word`；第二欄是出現次數，請將它命名為`freq`。請去除掉僅出現一次的詞，並將該資料表按照`freq`欄位的值從大到小排序。
+
+```{r ans.2.4}
+# please put your answer here
+
+# please show the results with the line below
+print(df.lyrics)
+```

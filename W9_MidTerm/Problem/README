@@ -1,0 +1,7 @@
+lyrics.txt: 
+https://www.kkbox.com/tw/tc/song/hhc00LH46Q2WqJXuWqJXu0XL-index.html
+
+access_log_nasa_95_1k.txt: 
+extracted first 1000 lines from 
+ftp://ita.ee.lbl.gov/traces/NASA_access_log_Jul95.gz, links found in
+http://ita.ee.lbl.gov/html/contrib/NASA-HTTP.html

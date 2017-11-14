@@ -1,38 +1,101 @@
 ---
-title: "ROverview"
-output:
-  revealjs::revealjs_presentation:
-    theme: night
-    highlight: pygments
-    center: true
-    transition: none
+title: "[W10] Crawling and parsing HTML"
+output: 
+    html_document:
+        theme: default
+        highlight: pygments
+
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r env.setup, echo=TRUE, message=FALSE, warning=FALSE}
+# your environment setup
+library(dplyr)
+library(rvest)
 ```
 
-## 試試水溫
+R 語言與資料科學導論作業 (W10)
+=============================
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+一般系 b96001001 未命名
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+## HTML Crawling and parsing (95%)
 
-## Slide with Bullets
+課堂上提到第一個WWW網頁。從現在的角度來看，這個網頁或許顯得有點古老，但由於它的內容相當簡單，
+所以很適合拿來練習剖析HTML資料。這個作業將用到其中的[Software Products](http://info.cern.ch/hypertext/WWW/Status.html)頁面。
+為避免造成對方伺服器的多餘負擔，請您將該網頁下載到自己的電腦裡，並從電腦裡的檔案完成以下問題。
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+1. 擷取該網頁內容中的標題（即W3 Software, Clients, Server） (30%)
 
-## Slide with R Output
+提示：
 
-```{r cars, echo = TRUE}
-summary(cars)
+* 您可以善用瀏覽器的開發工具，讓您能比較清楚掌握整個網頁的結構。
+* 這一題所指的標題包含H1標題 `W3 Software`，和 H2 標題 `Clients`和`Server` 。
+您可以用兩個CSS selector分別選出兩種標題，或參考CSS Selector的[逗點](https://www.w3schools.com/cssref/sel_element_comma.asp)語法。
+* 在R中使用`rvest`剖析HTML檔大致都遵循以下結構：一開始用`read_html`讀入HTML；
+其次用`html_nodes(...)`選出我們需要的元素；最後用`html_text()`取出元素內的文字。
+
+```{r parser.w3.heading}
+# your code goes here
 ```
 
-## Slide with Plot
+2. 擷取網頁中所有的連結（在href屬性中的資料） (30%)
 
-```{r pressure}
-plot(pressure)
+提示：
+
+* 處理HTML時，我們常常會需要取得元素中的href屬性。取出元素的屬性（attribute）和取出元素的文字（如上題）用到的方法非常的像。
+唯一的差別只有在取出屬性內容時，用到的函數是`html_attr(...)`。
+* 在選取元素方面，雖然大部分的A元素都會有href屬性，但有時不必然如此。所以在用CSS Selector選擇元素時，
+請確定我們選到的A元素是真的有href的元素。相關CSS Selector語法請參考[Attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors)。
+
+```{r parser.w3.links}
+# your code goes here
 ```
 
+3. 列出所有Servers下的產品敘述 (35%)
+
+該網頁中的Servers項目下共有4項產品，請擷取出以下四個描述：
+```
+[1] "A server for VM mainframes."                                                                                       
+[2] "A server for unix and VMS systems. A fast file server suitbale on-line documentation, and adaptable to many needs."
+[3] "Run son a VMS machine and allows webc lient eveywhere to read local VMS/Help files."                               
+[4] "A server which will returns documents by mail, given a request sent by mail. Also manages mailing lists." 
+```
+
+* 這一題需要特定元素（屬於Servers的`dl`元素）下的內容。其中一個可能的作法，是先取出所有的`dl`元素。
+之後在R裡面先取出屬於Servers的`dl`元素，之後再取出該元素中的產品敘述（`dd`元素）。
+* 另一個作法是直接用CSS Selector的[:nth-of-type](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-of-type)，
+例如在以下的範例中，是抽取Clients的產品敘述：
+```r
+client_list <- html %>% html_nodes("dl:nth-of-type(2) dd") %>% 
+            html_text() %>% gsub("\n", " ", .) %>% gsub("^ ", "", .)
+client_list
+```
+
+```{r parser.w3.server}
+# your code goes here
+```
+
+## 進階選答 （20%）
+
+網頁剖析的目的，是將網頁的訊息整理成結構化資料，以方便後續的分析。這個[網頁]
+(https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W10_CrawlAway/data/threadless_access_20171114.html)
+是一個國外的購物網站，請以它為材料，整理出這個頁面中的產品資料。
+
+該頁面應該有48筆產品資料，在頁面中，每個產品都有名稱、設計師、原價和售價等訊息。請用 `rvest`剖析這個網頁，
+並取出上述資料，整理成一個tibble資料表。該資料表的內容應該類似以下的格式：
+
+```
+## # A tibble: 48 x 4
+##                      title              designer price  sale
+##                      <chr>                 <chr> <dbl> <dbl>
+##  1                     PIN Grant Stephen Shepley    12   7.2
+##  2               Not Today            Fox Shiver    13   7.8
+##  3               Catburger          Philip Tseng    12   5.0
+##  4            HEAVY METAL!         Philipp Rietz    12   5.0
+##  5     Botanical Profanity           Naomi Batts    13   7.8
+...
+```
+
+```{r parser.threadless}
+# your code goes here
+```

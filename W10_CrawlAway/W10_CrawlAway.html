@@ -156,7 +156,7 @@ $(document).ready(function () {
 <p>一般系 b96001001 未命名</p>
 <div id="html-crawling-and-parsing-95" class="section level2">
 <h2>HTML Crawling and parsing (95%)</h2>
-<p>課堂上提到第一個WWW網頁。從現在的角度來看，這個網頁或許顯得有點古老，但由於它的內容相當簡單， 所以很適合拿來練習剖析HTML資料。這個作業將用到其中的<a href="http://info.cern.ch/hypertext/WWW/Status.html">Software Products</a>頁面。 為避免造成對方伺服器的多餘負擔，請您將該網頁下載到自己的電腦裡，並從電腦裡的檔案完成以下問題。</p>
+<p>課堂上提到第一個WWW網頁。從現在的角度來看，這個網頁或許顯得有點古老，但由於它的內容相當簡單， 所以很適合拿來練習剖析HTML資料。這個作業將用到其中的 <a href="https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W10_CrawlAway/data/www_software_product.html">Software Products</a>頁面。 請注意，由於該網頁的HTML語法和現在的標準語法有些許不同，為了處理方便，Github上的版本已經有做些許修正，請從上述連結下載該網頁。</p>
 <ol style="list-style-type: decimal">
 <li>擷取該網頁內容中的標題（即W3 Software, Clients, Server） (30%)</li>
 </ol>
@@ -195,7 +195,7 @@ client_list</code></pre></div></li>
 </div>
 <div id="-20" class="section level2">
 <h2>進階選答 （20%）</h2>
-<p>網頁剖析的目的，是將網頁的訊息整理成結構化資料，以方便後續的分析。這個[網頁] (<a href="https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W10_CrawlAway/data/threadless_access_20171114.html" class="uri">https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W10_CrawlAway/data/threadless_access_20171114.html</a>) 是一個國外的購物網站，請以它為材料，整理出這個頁面中的產品資料。</p>
+<p>網頁剖析的目的，是將網頁的訊息整理成結構化資料，以方便後續的分析。這個 <a href="https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W10_CrawlAway/data/threadless_access_20171114.html">網頁</a> 是一個國外的購物網站網頁，請以它為材料，整理出這個頁面中的產品資料。</p>
 <p>該頁面應該有48筆產品資料，在頁面中，每個產品都有名稱、設計師、原價和售價等訊息。請用 <code>rvest</code>剖析這個網頁， 並取出上述資料，整理成一個tibble資料表。該資料表的內容應該類似以下的格式：</p>
 <pre><code>## # A tibble: 48 x 4
 ##                      title              designer price  sale
@@ -206,6 +206,12 @@ client_list</code></pre></div></li>
 ##  4            HEAVY METAL!         Philipp Rietz    12   5.0
 ##  5     Botanical Profanity           Naomi Batts    13   7.8
 ...</code></pre>
+<p>提示：</p>
+<ul>
+<li>這個網頁檔案較大，請同學從GitHub上下載回自己的電腦，再從R讀入，以節省執行時間。</li>
+<li>一開始請善用瀏覽器的開發工具功能，會比直接在R裡面用rvest嘗試快得多。</li>
+<li>請先試著找出產品訊息的結構。事實上在這個網頁裡，每個產品都已經組織成一個個元素。 只要找到那些元素，再從裡面找名稱、設計師、原價、售價等訊息會容易得多。</li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here</span></code></pre></div>
 </div>
 </div>

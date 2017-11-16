@@ -154,31 +154,30 @@ $(document).ready(function () {
 <div id="r--w10" class="section level1">
 <h1>R 語言與資料科學導論作業 (W10)</h1>
 <p>一般系 b96001001 未命名</p>
-<div id="html-crawling-and-parsing-95" class="section level2">
-<h2>HTML Crawling and parsing (95%)</h2>
+<div id="html-crawling-and-parsing-100" class="section level2">
+<h2>HTML Crawling and parsing (100%)</h2>
 <p>課堂上提到第一個WWW網頁。從現在的角度來看，這個網頁或許顯得有點古老，但由於它的內容相當簡單， 所以很適合拿來練習剖析HTML資料。這個作業將用到其中的 <a href="https://raw.githubusercontent.com/RLadsNTU/RLadsLab/master/W10_CrawlAway/data/www_software_product.html">Software Products</a>頁面。 請注意，由於該網頁的HTML語法和現在的標準語法有些許不同，為了處理方便，Github上的版本已經有做些許修正，請從上述連結下載該網頁。</p>
-<ol style="list-style-type: decimal">
-<li>擷取該網頁內容中的標題（即W3 Software, Clients, Server） (30%)</li>
-</ol>
+<div id="w3-software-clients-server-30" class="section level3">
+<h3>1. 擷取該網頁內容中的標題（即W3 Software, Clients, Server） (30%)</h3>
 <p>提示：</p>
 <ul>
 <li>您可以善用瀏覽器的開發工具，讓您能比較清楚掌握整個網頁的結構。</li>
 <li>這一題所指的標題包含H1標題 <code>W3 Software</code>，和 H2 標題 <code>Clients</code>和<code>Server</code> 。 您可以用兩個CSS selector分別選出兩種標題，或參考CSS Selector的<a href="https://www.w3schools.com/cssref/sel_element_comma.asp">逗點</a>語法。</li>
-<li>在R中使用<code>rvest</code>剖析HTML檔大致都遵循以下結構：一開始用<code>read_html</code>讀入HTML； 其次用<code>html_nodes(...)</code>選出我們需要的元素；最後用<code>html_text()</code>取出元素內的文字。</li>
+<li>在R中使用<code>rvest</code>剖析HTML檔大致都遵循以下結構：一開始用<code>read_html</code>讀入HTML； 其次用<code>html_nodes(...)</code>選出我們需要的元素；最後用<code>html_text()</code>取出元素內的文字，或<code>html_attr(...)</code>取出元素內的屬性。</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here</span></code></pre></div>
-<ol start="2" style="list-style-type: decimal">
-<li>擷取網頁中所有的連結（在href屬性中的資料） (30%)</li>
-</ol>
+</div>
+<div id="href-30" class="section level3">
+<h3>2. 擷取網頁中所有的連結（在href屬性中的資料） (30%)</h3>
 <p>提示：</p>
 <ul>
 <li>處理HTML時，我們常常會需要取得元素中的href屬性。取出元素的屬性（attribute）和取出元素的文字（如上題）用到的方法非常的像。 唯一的差別只有在取出屬性內容時，用到的函數是<code>html_attr(...)</code>。</li>
-<li>在選取元素方面，雖然大部分的A元素都會有href屬性，但有時不必然如此。所以在用CSS Selector選擇元素時， 請確定我們選到的A元素是真的有href的元素。相關CSS Selector語法請參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">Attribute selectors</a>。</li>
+<li>在選取元素方面，雖然大部分的A元素都會有href屬性，但有時不必然如此。所以用CSS Selector選擇元素時， 請確定A元素的確有href屬性。相關CSS Selector語法請參考<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">Attribute selectors</a>。</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here</span></code></pre></div>
-<ol start="3" style="list-style-type: decimal">
-<li>列出所有Servers下的產品敘述 (35%)</li>
-</ol>
+</div>
+<div id="servers-40" class="section level3">
+<h3>3. 列出所有Servers下的產品敘述 (40%)</h3>
 <p>該網頁中的Servers項目下共有4項產品，請擷取出以下四個描述：</p>
 <pre><code>[1] &quot;A server for VM mainframes.&quot;                                                                                       
 [2] &quot;A server for unix and VMS systems. A fast file server suitbale on-line documentation, and adaptable to many needs.&quot;
@@ -192,6 +191,7 @@ $(document).ready(function () {
 client_list</code></pre></div></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># your code goes here</span></code></pre></div>
+</div>
 </div>
 <div id="-20" class="section level2">
 <h2>進階選答 （20%）</h2>

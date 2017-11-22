@@ -1,38 +1,50 @@
 ---
-title: "ROverview"
-output:
-  revealjs::revealjs_presentation:
-    theme: night
-    highlight: pygments
-    center: true
-    transition: none
+title: "[W11] Data Visualization"
+output: 
+    html_document:
+        theme: default
+        highlight: pygments
+
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r env.setup, echo=TRUE, message=FALSE, warning=FALSE}
+# your environment setup
+library(ggplot2)
 ```
 
-## 試試水溫
+R 語言與資料科學導論作業 (W11)
+=============================
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+一般系 b96001001 未命名
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+## 資料視覺化 (120%)
 
-## Slide with Bullets
+* 請繪製兩個資料視覺化的圖形。
+* 除了不能與作業格式的範例圖形重複外，這兩個圖形沒有任何限制。作業目的只是讓同學練習用R做資料視覺化。
+您也可以自由使用其他套件，不一定只能使用ggplot2。
+* 您可以從課程投影片或網路資源（如
+[ggplot extension gallery](http://www.ggplot2-exts.org/gallery/)
+或
+[R graph gallery](https://www.r-graph-gallery.com/) 或其他網站）的參考材料直接複製貼上程式碼。
+但當然歡迎您能夠以範例程式當作基礎，換個顏色、格式，甚至換個資料、換個方法繪製出全新的圖形。
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
-
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
+```{r vis.sample, warning=FALSE}
+ggplot(diamonds, aes(x=carat, y=price, color=clarity)) +
+geom_point() + 
+geom_smooth(method="lm", formula=y~poly(x, 2), color="black") + 
+ylim(0, 20000) + 
+facet_wrap(~clarity) +
+ggtitle("An data visualization example")
 ```
 
-## Slide with Plot
+### 1. 資料視覺化A (60%)
 
-```{r pressure}
-plot(pressure)
+```{r vis.A}
+# your code goes here
 ```
 
+### 2. 資料視覺化B (60%)
+
+```{r vis.B}
+# your code goes here
+```

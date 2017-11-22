@@ -28,6 +28,7 @@ R 語言與資料科學導論作業 (W11)
 [R graph gallery](https://www.r-graph-gallery.com/) 或其他網站）的參考材料直接複製貼上程式碼。
 但當然歡迎您能夠以範例程式當作基礎，換個顏色、格式，甚至換個資料、換個方法繪製出全新的圖形。
 
+![](sample_vis.png)
 ```{r vis.sample, warning=FALSE}
 ggplot(diamonds, aes(x=carat, y=price, color=clarity)) +
 geom_point() + 
